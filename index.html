@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Demo</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="POST">
+        Username: <input type="text" name="username" required><br><br>
+        Password: <input type="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+
+    {% if user_data %}
+        <h3>Thông tin người dùng:</h3>
+        <p>Username: {{ user_data['username'] }}</p>
+        <p>Thú cưng: {{ user_data['pet'] }}</p>
+        <p>Lương: {{ user_data['salary'] }}</p>
+    {% endif %}
+
+    <h3>Toàn bộ cơ sở dữ liệu:</h3>
+    <table border="1">
+        <tr>
+            <th>Username</th>
+            <th>Thú cưng</th>
+            <th>Lương</th>
+        </tr>
+        {% for row in all_data %}
+        <tr>
+            <td>{{ row['username'] }}</td>
+            <td>{{ row['pet'] }}</td>
+            <td>{{ row['salary'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
